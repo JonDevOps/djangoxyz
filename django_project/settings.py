@@ -1,5 +1,7 @@
 from pathlib import Path
 import environ
+from django.core.management.utils import get_random_secret_key
+
 
 env = environ.Env(  # <-- Updated!
     # set casting, default value
@@ -18,15 +20,17 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY', 
+default=get_random_secret_key()) 
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG') 
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'djangoxyz.fly.dev']
 
+CSRF_TRUSTED_ORIGINS = ['https://katias-blog.fly.dev'] 
 
 # Application definition
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
