@@ -30,7 +30,7 @@ DEBUG = env('DEBUG')
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'djangoxyz.fly.dev']
 
-CSRF_TRUSTED_ORIGINS = ['https://katias-blog.fly.dev'] 
+CSRF_TRUSTED_ORIGINS = ['https://djangoxyz.fly.dev'] 
 
 # Application definition
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
