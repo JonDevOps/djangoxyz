@@ -26,11 +26,11 @@ RUN set -ex && \
 # Copy the application code
 COPY . /code
 
-# Set a temporary SECRET_KEY for building purposes
+# Set a default SECRET_KEY for building purposes
 ENV SECRET_KEY "non-secret-key-for-building-purposes"
 
-# Collect static files using the temporary SECRET_KEY
-RUN python manage.py collectstatic --noinput
+# Collect static files. This is optional; you might want to handle this at runtime.
+RUN python manage.py collectstatic --noinput || true
 
 # Expose port 8000 for the application
 EXPOSE 8000
